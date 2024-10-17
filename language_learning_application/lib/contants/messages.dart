@@ -1,0 +1,1 @@
+const String TypeConversationErrorMessage = "Veritabanı bağlantısı sırasında bir hata meydana geldi.";
