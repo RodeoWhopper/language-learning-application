@@ -2,8 +2,17 @@ import 'package:flutter/material.dart';
 
 import 'database/database-model.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  final database = AppDatabase();
+
+  await database.into(database.decks)
+      .insert(DecksCompanion.insert(name: "deneme", createdDate: DateTime.now(), isDeleted: false));
+
+  List<Deck> allItems = await database.select(database.decks).get();
+
+  print('items in database: $allItems');
 
   runApp(const MyApp());
 }
